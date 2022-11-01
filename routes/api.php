@@ -3,17 +3,9 @@
 use App\User\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\File\Controllers\FileController;
+use App\Folder\Controllers\FolderController;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
 
 Route::prefix('users')->name('users.')->group(function () {
 
@@ -23,4 +15,17 @@ Route::prefix('users')->name('users.')->group(function () {
         Route::post('logout', [UserController::class, 'logout']);
         Route::get('', [UserController::class, 'get']);
     });
+});
+
+Route::prefix('folders')->name('folders.')->group(function () {
+    Route::middleware('auth:sanctum')->group(function() {
+        Route::get('', [FolderController::class, 'get']);
+        Route::post('create', [FolderController::class, 'create']);
+    });
+});
+
+Route::prefix('files')->name('files.')->middleware('auth:sanctum')->group(function () {
+    Route::get('', [FileController::class, 'index']);
+    Route::post('upload', [FileController::class, 'upload']);
+    Route::post('upload/{folder_id}', [FileController::class, 'upload']);
 });

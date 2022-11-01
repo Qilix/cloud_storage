@@ -13,13 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('files', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
+            $table->string('name')->nullable();
+            $table->string('path');
+            $table->foreignId('owner')->constrained('users')->onDelete('cascade');
+            $table->integer('size');
+            $table->date('delete_time')->nullable();
+            $table->foreignId('folder_id')->nullable()->constrained('folders')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -31,8 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
-        Schema::dropIfExists('users');
-        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
+        Schema::dropIfExists('files');
     }
 };

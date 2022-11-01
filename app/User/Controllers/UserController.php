@@ -6,9 +6,11 @@ use Illuminate\Routing\Controller;
 
 use App\Common\Models\User;
 
+use Illuminate\Support\Facades\File;
 use App\User\Requests\RegisterRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 
 class UserController extends Controller
@@ -24,6 +26,10 @@ class UserController extends Controller
             ['password' => bcrypt($request->password)],
         ));
         Auth::login($user);
+
+        $path = storage_path('app/user'.$user->id);
+        File::makeDirectory($path, 0777);
+
         return response()->json([
             'message' => 'Вы успешно зарегистрировались.',
             'user' => $user,
