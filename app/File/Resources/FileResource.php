@@ -10,11 +10,11 @@ class FileResource
 
     public string $name;
 
-    public string $path;
-
     public string $owner;
 
-    public int $size;
+    public float $size;
+
+    public ?int $folder_id;
 
     public Carbon $created_at;
 

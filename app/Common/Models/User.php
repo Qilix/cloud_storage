@@ -45,8 +45,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(File::class, 'owner');
     }
-    public function folder()
+    public function folders()
     {
-        return $this->hasMany(File::class, 'owner');
+        return $this->hasMany(Folder::class, 'owner');
     }
 }

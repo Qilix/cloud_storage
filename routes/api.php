@@ -20,12 +20,16 @@ Route::prefix('users')->name('users.')->group(function () {
 Route::prefix('folders')->name('folders.')->group(function () {
     Route::middleware('auth:sanctum')->group(function() {
         Route::get('', [FolderController::class, 'get']);
+        Route::get('/{folder_id}',[FolderController::class, 'getDetail']);
         Route::post('create', [FolderController::class, 'create']);
     });
 });
-
+Route::get('/files/download/{id}', [FileController::class, 'download']);
 Route::prefix('files')->name('files.')->middleware('auth:sanctum')->group(function () {
     Route::get('', [FileController::class, 'index']);
     Route::post('upload', [FileController::class, 'upload']);
     Route::post('upload/{folder_id}', [FileController::class, 'upload']);
+    Route::put( '{id}', [FileController::class, 'rename']);
+    Route::delete('{id}', [FileController::class, 'delete']);
+
 });

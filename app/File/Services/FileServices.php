@@ -2,16 +2,18 @@
 
 namespace App\File\Services;
 
-use App\File\DTOs\FileEditDTO;
 use App\Common\Models\File;
+use App\File\Actions\FileData;
+use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Storage;
+
 
 class FileServices
 {
-    public function uploadFile($folderId, FileEditDTO $dto, $user): File
+    public function uploadFile($folderId, $dto, $user): File
     {
         $file = new File();
         $file->name = $dto->name;
-        $file->path = $dto->path;
         $file->size = $dto->size;
         $file->owner = $user->id;
         $file->folder_id = $folderId;
@@ -21,37 +23,49 @@ class FileServices
         return $file;
     }
 
-//    public function uploadFile(FileEditDTO $dto, $user): File
-//    {
-//        $file = new File();
-//        $file->name = $dto->name;
-//        $file->path = $dto->path;
-//        $file->size = $dto->size;
-//        $file->owner = $user->id;
-//
-//        $file->save();
-//
-//        return $file;
-//    }
+    public function renameFile($id, $queries, $dto, $user): File
+    {
+        $data = new FileData();
 
-//    public function updatefile($id, fileQueries $quaries, fileUpdateDTO $dto, $user): file
-//    {
-//        $file = $quaries->getAuthorDetail($id, $user);
-//
-//        $file->title = $dto->title;
-//        $file->description = $dto->description;
-//        $file->text = $dto->text;
-//
-//        $file->sub_only = $dto->sub_only;
-//
-//        $file->save();
-//
-//        return $file;
-//    }
-//
-//    public function deletefile($id, fileQueries $queries, User $user)
-//    {
-//        $file = $queries->getAuthorDetail($id, $user);
-//        $file->delete();
-//    }
+        $file = $queries->getDetail($id, $user);
+
+        $folderId = $file->folder_id;
+        $oldpath = $data->getPath($folderId,$user,$file->name);
+
+        $extension = strstr( $file->name,'.');
+        $file->name = $dto->name.$extension;
+
+        $newpath=$data->getPath($folderId,$user,$file->name);
+        Storage::move($oldpath,$newpath);
+
+        $file->save();
+
+        return $file;
+    }
+
+    public function deletefile($id, $queries, $user)
+    {
+        $file = $queries->getDetail($id, $user);
+
+        $folderId = $file->folder_id;
+        $name = $file->name;
+
+        $data = new FileData();
+        $path = $data->getPath($folderId, $user, $name);
+
+        Storage::delete($path);
+        $file->delete();
+    }
+
+    public function downloadFile($id, $queries, $user){
+        $file = $queries->getDetail($id, $user);
+
+        $folderId = $file->folder_id;
+        $name = $file->name;
+
+        $data = new FileData();
+        $path = $data->getPath($folderId, $user, $name);
+
+        return Storage::download($path);
+    }
 }

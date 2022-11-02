@@ -13,7 +13,6 @@ class FolderCreateFactory
         $dto = new FolderCreateDTO();
 
         $dto->name = $request->name;
-        $dto->path = storage_path('app\user'.$user->id);
 
         return $dto;
     }

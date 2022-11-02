@@ -9,7 +9,7 @@ class FileRenameRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'string|max:255',
+            'name' => 'string|unique:files|max:255',
         ];
     }
 }

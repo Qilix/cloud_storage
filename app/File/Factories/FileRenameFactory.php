@@ -1,12 +1,18 @@
 <?php
 
+namespace App\File\Factories;
+
+use App\File\Actions\FileData;
+use App\File\DTOs\FileRenameDTO;
+
 class FileRenameFactory
 {
-    public static function fromRequest($id, Request $request, $user): FileEditDTO
+    public static function fromRequest($request): FileRenameDTO
     {
+
         $dto = new FileRenameDTO();
-        $dto->name = $file->getClientOriginalName();
-        $dto->path = $file->storeAs('user' . $user->id . $folderPath, $dto->name);
+        $dto->name = $request->get('name');
+
         return $dto;
     }
 }

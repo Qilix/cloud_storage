@@ -16,9 +16,8 @@ return new class extends Migration
         Schema::create('files', function (Blueprint $table) {
             $table->id();
             $table->string('name')->nullable();
-            $table->string('path');
             $table->foreignId('owner')->constrained('users')->onDelete('cascade');
-            $table->integer('size');
+            $table->double('size');
             $table->date('delete_time')->nullable();
             $table->foreignId('folder_id')->nullable()->constrained('folders')->onDelete('cascade');
             $table->timestamps();

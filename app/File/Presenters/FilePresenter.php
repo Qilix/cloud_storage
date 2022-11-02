@@ -14,9 +14,9 @@ class FilePresenter
 
         $resource->id = $file->id;
         $resource->name = $file->name;
-        $resource->path = $file->path;
         $resource->size = $file->size;
         $resource->owner = $file->user->name;
+        $resource->folder_id = $file->folder_id;
         $resource->created_at = $file->created_at;
         $resource->updated_at = $file->updated_at;
         return $resource;

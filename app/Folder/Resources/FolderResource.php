@@ -10,8 +10,6 @@ class FolderResource
 
     public string $name;
 
-    public string $path;
-
     public string $owner;
 
     public Carbon $created_at;

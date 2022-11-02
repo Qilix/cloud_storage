@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('folders', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('path');
             $table->foreignId('owner')->constrained('users')->nullable()->onDelete('cascade');
             $table->timestamps();
         });

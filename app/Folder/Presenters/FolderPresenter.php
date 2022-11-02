@@ -19,7 +19,6 @@ class FolderPresenter
 
         $resource->id = $folder->id;
         $resource->name = $folder->name;
-        $resource->path = $folder->path;
         $resource->owner = $folder->user->name;
         $resource->created_at = $folder->created_at;
         $resource->updated_at = $folder->updated_at;
