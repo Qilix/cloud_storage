@@ -66,6 +66,6 @@ class FileServices
         $data = new FileData();
         $path = $data->getPath($folderId, $user, $name);
 
-        return Storage::download($path);
+        return $path;
     }
 }

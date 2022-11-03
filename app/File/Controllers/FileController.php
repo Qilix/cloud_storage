@@ -14,6 +14,7 @@ use App\File\Requests\FileUploadRequest;
 use Illuminate\Support\Facades\Auth;
 use App\File\Services\FileServices;
 use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Storage;
 
 
 class FileController extends Controller
@@ -52,6 +53,6 @@ class FileController extends Controller
 
     public function download($id,FileServices $services, FileQueries $queries){
         $file = $services->downloadFile($id, $queries, Auth::user());
-        return Response::download($file);
+        return Storage::download($file);
     }
 }
