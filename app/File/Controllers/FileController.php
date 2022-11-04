@@ -19,6 +19,16 @@ use Illuminate\Support\Facades\Storage;
 
 class FileController extends Controller
 {
+
+    /**
+     *
+     * Получение всех файлов авторизованного пользователя
+     * и размер всех его файлов на диске.
+     *
+     * @param FileQueries $queries
+     * @param FilePresenter $presenter
+     */
+
     public function index(FileQueries $queries, FilePresenter $presenter)
     {
         $files = $queries->get(Auth::user());
@@ -26,6 +36,14 @@ class FileController extends Controller
         $currentSize = $data->getSize($files);
         return response()->json(['files'=>$presenter->collect($files),'size' => $currentSize.'/100Mb']);
     }
+
+    /** Загрузка файлов
+     *
+     * @param FileUploadRequest $request
+     * @param FileQueries $queries
+     * @param FileServices $services
+     * @param int $folderId
+     */
 
     public function upload(FileUploadRequest $request,FileQueries $queries, FileServices $services, $folderId=null)
     {
@@ -38,18 +56,41 @@ class FileController extends Controller
         ]);
     }
 
+    /** Переименование файла
+     *
+     * @param int $id
+     * @param FileRenameRequest $request
+     * @param FilePresenter $presenter
+     * @param FileServices $services
+     * @param FileQueries $queries
+     */
+
     public function rename($id, FileRenameRequest $request, FilePresenter $presenter, FileServices $services, FileQueries $queries)
     {
         $dto = FileRenameFactory::fromRequest($request);
-        $model = $services->renameFile($id, $queries, $dto, Auth::user(), $request);
+        $model = $services->renameFile($id, $queries, $dto, Auth::user());
         return Response::json($presenter->present($model));
     }
+
+    /** Удаление файла
+     *
+     * @param int $id
+     * @param FileServices $services
+     * @param FileQueries $queries
+     */
 
     public function delete($id, FileServices $services, FileQueries $queries)
     {
         $services->deleteFile($id, $queries, Auth::user());
         return Response::json(['message' => 'Successfully deleted']);
     }
+
+    /** Скачивание файла
+     *
+     * @param int $id
+     * @param FileServices $services
+     * @param FileQueries $queries
+     */
 
     public function download($id,FileServices $services, FileQueries $queries){
         $file = $services->downloadFile($id, $queries, Auth::user());

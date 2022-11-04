@@ -16,11 +16,26 @@ use Illuminate\Support\Facades\Response;
 
 class FolderController extends Controller
 {
+
+    /** Получение всех папок пользователя
+     *
+     * @param FolderQueries $queries
+     * @param FolderPresenter $presenter
+     */
     public function get(FolderQueries $queries, FolderPresenter $presenter)
     {
         $data = $queries->get(Auth::user());
         return Response::json(['folders'=>$presenter->collect($data)]);
     }
+
+    /** Получение данных о папке
+     * и размер файлов в ней
+     *
+     * @param int $id
+     * @param FolderQueries $folderqueries
+     * @param FileQueries $filequeries
+     * @param FolderPresenter $presenter
+     */
 
     public function getDetail($id,FolderQueries $folderqueries, FileQueries $filequeries, FolderPresenter $presenter){
         $data = $folderqueries->getFolder($id,Auth::user());
@@ -29,9 +44,16 @@ class FolderController extends Controller
         $currentSize = $sizeData->getSize($files);
         return Response::json(['folder'=>$presenter->present($data), 'folderSize'=>$currentSize.'Mb']);
     }
+
+    /** Создание папки
+     *
+     *  @param FolderCreateRequest $request
+     *  @param FolderPresenter $presenter
+     *  @param FolderServices $service
+     */
     public function create(FolderCreateRequest $request, FolderPresenter $presenter, FolderServices $service)
     {
-        $dto = FolderCreateFactory::fromRequest($request, Auth::user());
+        $dto = FolderCreateFactory::fromRequest($request);
         $model = $service->createFolder($dto, Auth::user());
         return Response::json($presenter->present($model));
     }

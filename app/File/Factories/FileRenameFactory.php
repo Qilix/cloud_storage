@@ -2,7 +2,6 @@
 
 namespace App\File\Factories;
 
-use App\File\Actions\FileData;
 use App\File\DTOs\FileRenameDTO;
 
 class FileRenameFactory

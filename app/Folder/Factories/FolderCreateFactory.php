@@ -4,11 +4,10 @@ namespace App\Folder\Factories;
 
 use App\Folder\DTOs\FolderCreateDTO;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class FolderCreateFactory
 {
-    public static function fromRequest(Request $request, $user): FolderCreateDTO
+    public static function fromRequest(Request $request): FolderCreateDTO
     {
         $dto = new FolderCreateDTO();
 
