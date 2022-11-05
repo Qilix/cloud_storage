@@ -318,7 +318,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\File\\Actions\\FileData\u003A\u003AgetName\u0028\u0029",
             "name": "getName",
-            "summary": "",
+            "summary": "\u041F\u043E\u043B\u0443\u0447\u0435\u043D\u0438\u0435\u0020\u043E\u0440\u0438\u0433\u0438\u043D\u0430\u043B\u044C\u043D\u043E\u0433\u043E\u0020\u0438\u043C\u0435\u043D\u0438\u0020\u0444\u0430\u0439\u043B\u0430\u0020\u043F\u0440\u0438\u0020\u0437\u0430\u0433\u0440\u0443\u0437\u043A\u0435",
             "url": "classes/App-File-Actions-FileData.html#method_getName"
         },                {
             "fqsen": "\\App\\File\\Actions\\FileData\u003A\u003AgetSize\u0028\u0029",
@@ -333,7 +333,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\File\\Actions\\FileData\u003A\u003AgetPath\u0028\u0029",
             "name": "getPath",
-            "summary": "",
+            "summary": "\u0412\u043E\u0437\u0432\u0440\u0430\u0449\u0430\u0435\u0442\u0020\u043F\u0443\u0442\u044C\u0020\u0434\u043E\u0020\u0444\u0430\u0439\u043B\u0430",
             "url": "classes/App-File-Actions-FileData.html#method_getPath"
         },                {
             "fqsen": "\\App\\File\\Controllers\\FileController",
@@ -365,6 +365,31 @@ Search.appendIndex(
             "name": "download",
             "summary": "\u0421\u043A\u0430\u0447\u0438\u0432\u0430\u043D\u0438\u0435\u0020\u0444\u0430\u0439\u043B\u0430",
             "url": "classes/App-File-Controllers-FileController.html#method_download"
+        },                {
+            "fqsen": "\\App\\File\\Controllers\\FileController\u003A\u003Agenerate\u0028\u0029",
+            "name": "generate",
+            "summary": "\u0413\u0435\u043D\u0435\u0440\u0430\u0446\u0438\u044F\u0020\u043F\u0443\u0431\u043B\u0438\u0447\u043D\u043E\u0439\u0020\u0441\u0441\u044B\u043B\u043A\u0438\u0020\u043D\u0430\u0020\u0444\u0430\u0439\u043B\n\u0020\u0414\u043B\u044F\u0020\u043F\u0440\u043E\u0441\u043C\u043E\u0442\u0440\u0430\u0020\u0438\u0020\u0441\u043A\u0430\u0447\u0438\u0432\u0430\u043D\u0438\u044F",
+            "url": "classes/App-File-Controllers-FileController.html#method_generate"
+        },                {
+            "fqsen": "\\App\\File\\Controllers\\FileController\u003A\u003AshowByLink\u0028\u0029",
+            "name": "showByLink",
+            "summary": "\u041F\u043E\u043B\u0443\u0447\u0435\u043D\u0438\u0435\u0020\u0434\u0430\u043D\u043D\u044B\u0445\u0020\u043E\u0020\u0444\u0430\u0439\u043B\u0435\u0020\u043F\u043E\u0020\u043F\u0443\u0431\u043B\u0438\u0447\u043D\u043E\u0439\u0020\u0441\u0441\u044B\u043B\u043A\u0435",
+            "url": "classes/App-File-Controllers-FileController.html#method_showByLink"
+        },                {
+            "fqsen": "\\App\\File\\Controllers\\FileController\u003A\u003AdownloadByLink\u0028\u0029",
+            "name": "downloadByLink",
+            "summary": "\u0421\u043A\u0430\u0447\u0438\u0432\u0430\u043D\u0438\u0435\u0020\u0444\u0430\u0439\u043B\u0430\u0020\u043F\u043E\u0020\u043F\u043E\u0431\u043B\u0438\u0447\u043D\u043E\u0439\u0020\u0441\u0441\u044B\u043B\u043A\u0435",
+            "url": "classes/App-File-Controllers-FileController.html#method_downloadByLink"
+        },                {
+            "fqsen": "\\App\\File\\DTOs\\FileGenerateLinkDTO",
+            "name": "FileGenerateLinkDTO",
+            "summary": "",
+            "url": "classes/App-File-DTOs-FileGenerateLinkDTO.html"
+        },                {
+            "fqsen": "\\App\\File\\DTOs\\FileGenerateLinkDTO\u003A\u003A\u0024public_link",
+            "name": "public_link",
+            "summary": "",
+            "url": "classes/App-File-DTOs-FileGenerateLinkDTO.html#property_public_link"
         },                {
             "fqsen": "\\App\\File\\DTOs\\FileRenameDTO",
             "name": "FileRenameDTO",
@@ -400,6 +425,16 @@ Search.appendIndex(
             "name": "render",
             "summary": "",
             "url": "classes/App-File-Exceptions-MaxSizeException.html#method_render"
+        },                {
+            "fqsen": "\\App\\File\\Factories\\FileGenerateLinkFactory",
+            "name": "FileGenerateLinkFactory",
+            "summary": "",
+            "url": "classes/App-File-Factories-FileGenerateLinkFactory.html"
+        },                {
+            "fqsen": "\\App\\File\\Factories\\FileGenerateLinkFactory\u003A\u003AfromRequest\u0028\u0029",
+            "name": "fromRequest",
+            "summary": "",
+            "url": "classes/App-File-Factories-FileGenerateLinkFactory.html#method_fromRequest"
         },                {
             "fqsen": "\\App\\File\\Factories\\FileRenameFactory",
             "name": "FileRenameFactory",
@@ -456,6 +491,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-File-Queries-FileQueries.html#method_getInFolder"
         },                {
+            "fqsen": "\\App\\File\\Queries\\FileQueries\u003A\u003AgetByLink\u0028\u0029",
+            "name": "getByLink",
+            "summary": "",
+            "url": "classes/App-File-Queries-FileQueries.html#method_getByLink"
+        },                {
             "fqsen": "\\App\\File\\Requests\\FileRenameRequest",
             "name": "FileRenameRequest",
             "summary": "",
@@ -506,6 +546,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-File-Resources-FileResource.html#property_folder_id"
         },                {
+            "fqsen": "\\App\\File\\Resources\\FileResource\u003A\u003A\u0024public_link",
+            "name": "public_link",
+            "summary": "",
+            "url": "classes/App-File-Resources-FileResource.html#property_public_link"
+        },                {
             "fqsen": "\\App\\File\\Resources\\FileResource\u003A\u003A\u0024created_at",
             "name": "created_at",
             "summary": "",
@@ -550,6 +595,16 @@ Search.appendIndex(
             "name": "downloadFile",
             "summary": "",
             "url": "classes/App-File-Services-FileServices.html#method_downloadFile"
+        },                {
+            "fqsen": "\\App\\File\\Services\\FileServices\u003A\u003AgenerateLink\u0028\u0029",
+            "name": "generateLink",
+            "summary": "",
+            "url": "classes/App-File-Services-FileServices.html#method_generateLink"
+        },                {
+            "fqsen": "\\App\\File\\Services\\FileServices\u003A\u003AdownloadByLink\u0028\u0029",
+            "name": "downloadByLink",
+            "summary": "",
+            "url": "classes/App-File-Services-FileServices.html#method_downloadByLink"
         },                {
             "fqsen": "\\App\\Folder\\Controllers\\FolderController",
             "name": "FolderController",
@@ -715,6 +770,16 @@ Search.appendIndex(
             "name": "logout",
             "summary": "",
             "url": "classes/App-User-Controllers-UserController.html#method_logout"
+        },                {
+            "fqsen": "\\App\\User\\Queries\\UserQueries",
+            "name": "UserQueries",
+            "summary": "",
+            "url": "classes/App-User-Queries-UserQueries.html"
+        },                {
+            "fqsen": "\\App\\User\\Queries\\UserQueries\u003A\u003Aget\u0028\u0029",
+            "name": "get",
+            "summary": "",
+            "url": "classes/App-User-Queries-UserQueries.html#method_get"
         },                {
             "fqsen": "\\App\\User\\Requests\\RegisterRequest",
             "name": "RegisterRequest",
@@ -885,6 +950,11 @@ Search.appendIndex(
             "name": "User",
             "summary": "",
             "url": "namespaces/app-user.html"
+        },                {
+            "fqsen": "\\App\\User\\Queries",
+            "name": "Queries",
+            "summary": "",
+            "url": "namespaces/app-user-queries.html"
         },                {
             "fqsen": "\\App\\User\\Requests",
             "name": "Requests",
