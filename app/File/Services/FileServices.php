@@ -4,7 +4,7 @@ namespace App\File\Services;
 
 use App\Common\Models\File;
 use App\File\Actions\FileData;
-use Illuminate\Support\Facades\Response;
+use App\User\Queries\UserQueries;
 use Illuminate\Support\Facades\Storage;
 
 
@@ -66,6 +66,30 @@ class FileServices
         $data = new FileData();
         $path = $data->getPath($folderId, $user, $name);
 
-        return $path;
+        return Storage::download($path);
+    }
+
+    public function generate($id, $queries, $dto, $user){
+
+        $file = $queries->getDetail($id, $user);
+        $file->public_link = $dto->public_link;
+        $file->save();
+
+        return $file;
+    }
+
+    public function downloadByLink($link, $queries){
+     $file = $queries->getByLink($link);
+
+     $folderId = $file->folder_id;
+     $name = $file->name;
+
+     $userData = new UserQueries();
+     $user = $userData->get($file->owner);
+
+     $data = new FileData();
+     $path = $data->getPath($folderId, $user, $name);
+
+     return Storage::download($path);
     }
 }

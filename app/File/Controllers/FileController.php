@@ -5,6 +5,7 @@ namespace App\File\Controllers;
 use App\Common\Controllers\Controller;
 use App\Common\Models\File;
 use App\File\Actions\FileData;
+use App\File\Factories\FileGenerateLinkFactory;
 use App\File\Factories\FileRenameFactory;
 use App\File\Factories\FileUploadFactory;
 use App\File\Presenters\FilePresenter;
@@ -19,7 +20,6 @@ use Illuminate\Support\Facades\Storage;
 
 class FileController extends Controller
 {
-
     /**
      *
      * Получение всех файлов авторизованного пользователя
@@ -94,6 +94,22 @@ class FileController extends Controller
 
     public function download($id,FileServices $services, FileQueries $queries){
         $file = $services->downloadFile($id, $queries, Auth::user());
-        return Storage::download($file);
+        return $file;
+    }
+
+    public function generateLink($id, Fileservices $services, FileQueries $queries,FilePresenter $presenter){
+        $dto = FileGenerateLinkFactory::fromRequest();
+        $model = $services->generate($id, $queries, $dto, Auth::user());
+        return Response::json($presenter->present($model));
+
+    }
+    public function showByLink($link, FileQueries $queries, FilePresenter $presenter){
+        $file = $queries->getByLink($link);
+        return response()->json(['file'=>$presenter->present($file)]);
+    }
+
+    public function downloadByLink($link, FileServices $services, FileQueries $queries){
+        $file = $services->downloadByLink($link, $queries);
+        return $file;
     }
 }

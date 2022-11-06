@@ -1,7 +1,6 @@
 <?php
 
 use App\User\Controllers\UserController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\File\Controllers\FileController;
 use App\Folder\Controllers\FolderController;
@@ -24,12 +23,17 @@ Route::prefix('folders')->name('folders.')->group(function () {
         Route::post('create', [FolderController::class, 'create']);
     });
 });
-Route::get('/files/download/{id}', [FileController::class, 'download']);
-Route::prefix('files')->name('files.')->middleware('auth:sanctum')->group(function () {
-    Route::get('', [FileController::class, 'index']);
-    Route::post('upload', [FileController::class, 'upload']);
-    Route::post('upload/{folder_id}', [FileController::class, 'upload']);
-    Route::put( '{id}', [FileController::class, 'rename']);
-    Route::delete('{id}', [FileController::class, 'delete']);
 
+Route::prefix('files')->name('files.')->group(function () {
+    Route::get('/{link}', [FileController::class, 'showByLink']);
+    Route::get('/downloadbylink/{link}', [FileController::class, 'downloadByLink']);
+    Route::middleware('auth:sanctum')->group(function () {
+        Route::get('', [FileController::class, 'index']);
+        Route::post('upload', [FileController::class, 'upload']);
+        Route::post('upload/{folder_id}', [FileController::class, 'upload']);
+        Route::put('{id}', [FileController::class, 'rename']);
+        Route::delete('{id}', [FileController::class, 'delete']);
+        Route::get('/download/{id}', [FileController::class, 'download']);
+        Route::post('/download/generatelink/{id}', [FileController::class, 'generateLink']);
+    });
 });

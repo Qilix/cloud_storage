@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('name')->nullable();
             $table->foreignId('owner')->constrained('users')->onDelete('cascade');
             $table->double('size');
-            $table->date('delete_time')->nullable();
+            $table->uuid('public_link')->nullable();
             $table->foreignId('folder_id')->nullable()->constrained('folders')->onDelete('cascade');
             $table->timestamps();
         });

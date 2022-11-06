@@ -16,6 +16,8 @@ class FileResource
 
     public ?int $folder_id;
 
+    public ?string $public_link;
+
     public Carbon $created_at;
 
     public Carbon $updated_at;

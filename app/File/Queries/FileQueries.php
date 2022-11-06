@@ -20,4 +20,8 @@ class FileQueries
     {
         return File::where('folder_id', $folder_id)->get();
     }
+
+    public function getByLink($link){
+        return File::where('public_link', $link)->first();
+    }
 }
