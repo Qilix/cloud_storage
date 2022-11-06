@@ -100,12 +100,12 @@ class FileController extends Controller
     public function generateLink($id, Fileservices $services, FileQueries $queries,FilePresenter $presenter){
         $dto = FileGenerateLinkFactory::fromRequest();
         $model = $services->generate($id, $queries, $dto, Auth::user());
-        return Response::json($presenter->present($model));
+        return Response::json(['file'=>$presenter->present($model), 'public_link'=>url("/api/files/{$model->public_link}")]);
 
     }
     public function showByLink($link, FileQueries $queries, FilePresenter $presenter){
         $file = $queries->getByLink($link);
-        return response()->json(['file'=>$presenter->present($file)]);
+        return response()->json(['file'=>$presenter->present($file), 'downloadByLink'=>url("/api/files/downloadbylink/{$file->public_link}")]);
     }
 
     public function downloadByLink($link, FileServices $services, FileQueries $queries){
