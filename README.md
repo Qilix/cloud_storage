@@ -30,6 +30,6 @@ phpDocumentor: `../docs`
 4. `alias sail='vendor/bin/sail'`.
 5. `sail up -d`.
 6. `sail down -v`.
-7. 'sail up -d'.
+7. `sail up -d`.
 8. `sail artisan migrate`.
     1. В случае ошибки `sail artisan migrate:fresh`.
