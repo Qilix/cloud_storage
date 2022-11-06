@@ -15,7 +15,8 @@ class FolderServices
         $folder->name = $dto->name;
         $folder->owner = $user->id;
 
-        File::makeDirectory($folder->path.'/'.$folder->name, 0777);
+        $path = storage_path('app/user'.$user->id);
+        File::makeDirectory($path.'/'.$folder->name, 0777);
         $folder->save();
 
         return $folder;
