@@ -1,0 +1,547 @@
+{
+	"info": {
+		"_postman_id": "1ba793af-078b-47a7-8b64-ccef267443aa",
+		"name": "cloud_storage prod",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20525313"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "UserGET",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://cloud.qilixous.ru/api/users",
+							"protocol": "http",
+							"host": [
+								"cloud",
+								"qilixous",
+								"ru"
+							],
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Registration",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "user1@mail.ru",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "user1",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123123",
+									"type": "text"
+								},
+								{
+									"key": "password_confirmation",
+									"value": "123123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://cloud.qilixous.ru/api/users/register",
+							"protocol": "http",
+							"host": [
+								"cloud",
+								"qilixous",
+								"ru"
+							],
+							"path": [
+								"api",
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Log-in",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "user1@mail.ru",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://cloud.qilixous.ru/api/users/login",
+							"protocol": "http",
+							"host": [
+								"cloud",
+								"qilixous",
+								"ru"
+							],
+							"path": [
+								"api",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Log-out",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://cloud.qilixous.ru/api/users/logout",
+							"protocol": "http",
+							"host": [
+								"cloud",
+								"qilixous",
+								"ru"
+							],
+							"path": [
+								"api",
+								"users",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Files",
+			"item": [
+				{
+					"name": "Onwer",
+					"item": [
+						{
+							"name": "Files",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://cloud.qilixous.ru/api/files",
+									"protocol": "http",
+									"host": [
+										"cloud",
+										"qilixous",
+										"ru"
+									],
+									"path": [
+										"api",
+										"files"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Rename",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Normal file",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://cloud.qilixous.ru/api/files/5",
+									"protocol": "http",
+									"host": [
+										"cloud",
+										"qilixous",
+										"ru"
+									],
+									"path": [
+										"api",
+										"files",
+										"5"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Upload",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"type": "file",
+											"src": "/C:/2/Text1mb.txt"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://cloud.qilixous.ru/api/files/upload",
+									"protocol": "http",
+									"host": [
+										"cloud",
+										"qilixous",
+										"ru"
+									],
+									"path": [
+										"api",
+										"files",
+										"upload"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UploadInFolder",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"type": "file",
+											"src": "/C:/2/text.txt"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://cloud.qilixous.ru/api/files/upload/2",
+									"protocol": "http",
+									"host": [
+										"cloud",
+										"qilixous",
+										"ru"
+									],
+									"path": [
+										"api",
+										"files",
+										"upload",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://cloud.qilixous.ru/api/files/5",
+									"protocol": "http",
+									"host": [
+										"cloud",
+										"qilixous",
+										"ru"
+									],
+									"path": [
+										"api",
+										"files",
+										"5"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Download",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://cloud.qilixous.ru/api/files/download/6",
+									"protocol": "http",
+									"host": [
+										"cloud",
+										"qilixous",
+										"ru"
+									],
+									"path": [
+										"api",
+										"files",
+										"download",
+										"6"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Public_link",
+					"item": [
+						{
+							"name": "GenerateLink",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://cloud.qilixous.ru/api/files/download/generatelink/1",
+									"protocol": "http",
+									"host": [
+										"cloud",
+										"qilixous",
+										"ru"
+									],
+									"path": [
+										"api",
+										"files",
+										"download",
+										"generatelink",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DownloadByLink",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://cloud.qilixous.ru/api/files/downloadbylink/d833f1c9-667d-470b-9b7e-9bc81293946f",
+									"protocol": "http",
+									"host": [
+										"cloud",
+										"qilixous",
+										"ru"
+									],
+									"path": [
+										"api",
+										"files",
+										"downloadbylink",
+										"d833f1c9-667d-470b-9b7e-9bc81293946f"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ShowByLink",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://cloud.qilixous.ru/api/files/3b1b062d-98fb-4c97-8eee-80bfb4cd036f",
+									"protocol": "http",
+									"host": [
+										"cloud",
+										"qilixous",
+										"ru"
+									],
+									"path": [
+										"api",
+										"files",
+										"3b1b062d-98fb-4c97-8eee-80bfb4cd036f"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Folders",
+			"item": [
+				{
+					"name": "FoldersGET",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://cloud.qilixous.ru/api/folders",
+							"protocol": "http",
+							"host": [
+								"cloud",
+								"qilixous",
+								"ru"
+							],
+							"path": [
+								"api",
+								"folders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FolderDetailGET",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://cloud.qilixous.ru/api/folders/2",
+							"protocol": "http",
+							"host": [
+								"cloud",
+								"qilixous",
+								"ru"
+							],
+							"path": [
+								"api",
+								"folders",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateFolder",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "newfold",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://cloud.qilixous.ru/api/folders/create",
+							"protocol": "http",
+							"host": [
+								"cloud",
+								"qilixous",
+								"ru"
+							],
+							"path": [
+								"api",
+								"folders",
+								"create"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
