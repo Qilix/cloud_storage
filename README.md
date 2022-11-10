@@ -19,17 +19,3 @@ __Также сервис предусматривает:__
 - генерацию уникальной публичной ссылки на файл.
 
 Проект создан с помощью `Laravel 9.19` и поддерживает набор команд `Laravel sail`.
-
-phpDocumentor: `../docs` 
-
-Сервис был создан на vps.
-Инструкция:
-1. Создать `.env` можно редактировать `.env.example`.
-2. `composer install`.
-3. `php artisan key:generate`.
-4. `alias sail='vendor/bin/sail'`.
-5. `sail up -d`.
-6. `sail down -v`.
-7. `sail up -d`.
-8. `sail artisan migrate`.
-    1. В случае ошибки `sail artisan migrate:fresh`.
